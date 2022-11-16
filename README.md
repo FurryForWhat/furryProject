@@ -1,2 +1,0 @@
-# furryProject
-freecode and practise
