@@ -1,0 +1,104 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
+
+int database[10];
+int main(){
+    srand(time(NULL));
+    int age;
+    int flag= 0;
+    int userInput = 0;
+    int id=0;
+    int id2=0;
+    int databaseIndex=0;
+    int player=0;
+    int referee=0;
+    int randNum1;
+    int randNum;
+    int tryAgain= 0;
+    int globalFlag= 0;
+    printf("What is your age Gentleman!!! \n");
+    scanf("%d", &age);
+    if(age<17){
+        printf("Sorry dude!!! You can't play this game :(   \n");
+    }else{
+        while(true){
+            printf("Have account? Press 1:\n");
+            printf("New User? Press 2:\n");
+            scanf("%d",&userInput);
+            //printf("This is input %d",userInput);
+            if(userInput == 1){
+                printf("Enter your account id \n");
+                scanf("%d", &id );
+                for(int i = 0; i < 1; i++){
+                    if(id == database[i] ){
+                        printf("Welcome to Poker 21 game!!!! \n");
+                        while (true){
+
+                            randNum= rand()%100;
+
+                            for( int i=0; i<1; i++){
+                                player+= randNum;
+                            }
+                            randNum1 = rand() % 100;
+                            for (int j = 0; j < 1; ++j) {
+                                referee += randNum1;
+                            }
+                            if(player > referee){
+                                printf("Player number is %d and Referee number is %d \n", player, referee);
+                                printf(" Player Win!!!!! \n");
+                            }else {
+                                printf("Player number is %d and Referee number is %d\n", player, referee);
+                                printf(" Referee Win!!!!!\n");
+                            }
+                            printf("Wanna Try again???? \n press 1 to continue \n press 2 to exit\n");
+                            scanf("%d",&tryAgain);
+                            if(tryAgain== 2){
+                                break;
+                            }else{
+                                globalFlag= 1;
+                            }
+                        }
+
+
+                    } else{
+                        printf("invalid id!!!! please try again \n");
+                    }
+                }
+            }else if(userInput==2){
+                printf("Enter registration number . \n");
+                scanf("%d", &id);
+                for(int j=0; j<10 ; j++){
+                    if(database[j]== id){
+                        flag=1;
+                    }
+                }
+                while (true){
+                    if(flag==1){
+                        printf("User Id Already Taken:\n");
+                    } else{
+                        printf("Confirm your ID: Enter: ");
+                        scanf("%d",&id2);
+
+                        if(id==id2){
+                            database[databaseIndex]=id;
+                            databaseIndex;
+                            printf("Registration success:\nPlease go to login \n");
+
+                            break;
+
+                        } else{
+                            printf("Id not same:\n");
+                            break;
+                        }
+                    }
+                }
+
+            } else{
+                printf("Choose 1 or 2 \n");
+            }
+
+        }
+    }
+
+}
